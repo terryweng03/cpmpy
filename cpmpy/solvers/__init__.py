@@ -34,6 +34,7 @@ List of solver submodules
     minizinc
     cpo
     gurobi
+    copt
     exact
     z3
     pysat
@@ -69,6 +70,7 @@ from .ortools import CPM_ortools
 from .pysat import CPM_pysat
 from .minizinc import CPM_minizinc
 from .gurobi import CPM_gurobi
+from .copt import CPM_copt
 from .pysdd import CPM_pysdd
 from .z3 import CPM_z3
 from .exact import CPM_exact
@@ -90,6 +92,7 @@ __all__ = [
     "CPM_exact",
     "CPM_gcs",
     "CPM_gurobi",
+    "CPM_copt",
     "CPM_hexaly",
     "CPM_highs",
     "CPM_minizinc",

@@ -30,6 +30,7 @@ from .exact import CPM_exact
 from .choco import CPM_choco
 from .pumpkin import CPM_pumpkin
 from .cpo   import CPM_cpo
+from .copt import CPM_copt
 from .cplex import CPM_cplex
 from .pindakaas import CPM_pindakaas
 from .highs import CPM_highs
@@ -82,6 +83,7 @@ class SolverLookup():
                 ("minizinc", CPM_minizinc),
                 ("gcs", CPM_gcs),
                 ("gurobi", CPM_gurobi),
+                ("copt", CPM_copt),
                 ("pysat", CPM_pysat),
                 ("pysdd", CPM_pysdd),
                 ("exact", CPM_exact),

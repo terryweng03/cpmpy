@@ -27,7 +27,8 @@ solver_dependencies = {
     "minizinc": ["minizinc>=0.7.0"],
     "pysat": ["python-sat>=1.8.dev4"],
     "gurobi": ["gurobipy>=11.0.0"],
-    "highs": ["highspy <=1.14.0"],
+    "copt": ["coptpy>=8.0.0"],
+    "highs": ["highspy"],
     "pysdd": ["pysdd>=0.2.11"],
     "gcs": ["gcspy>=0.1.9"], # first version to pass all tests
     "cpo": ["docplex>=2.28.240"],
@@ -38,22 +39,6 @@ solver_dependencies = {
     "rc2": ["python-sat>=1.9.dev5", "pypblib"]
 }
 solver_dependencies["all"] = list({pkg for group in solver_dependencies.values() for pkg in group}) 
-
-format_dependencies = {
-    "io.mps": ["pyscipopt"],
-    "io.lp": ["pyscipopt"],
-    "io.cip": ["pyscipopt"],
-    "io.fzn": ["pyscipopt"],
-    "io.gms": ["pyscipopt"],
-    "io.pip": ["pyscipopt"],
-    "io.scip": ["pyscipopt"],
-    "io.dimacs": solver_dependencies["pindakaas"],  # Required for write_dimacs (uses to_cnf transformation)
-    "io.cnf": solver_dependencies["pindakaas"],  # Required for write_dimacs (uses to_cnf transformation)
-    "io.wcnf": solver_dependencies["pindakaas"],  # Required for write(..., format="wcnf") via DIMACS writer path
-    "io.opb": [],  # No external dependencies
-    "io.xcsp3": ["pycsp3"],
-}
-format_dependencies["io.all"] = list({pkg for group in format_dependencies.values() for pkg in group})
 
 setup(
     name='cpmpy',
@@ -77,7 +62,6 @@ setup(
     extras_require={
         # Solvers
         **solver_dependencies,
-        **format_dependencies,
         # Tools
         "xcsp3": ["pycsp3", "requests", "tqdm", "matplotlib", "psutil", "filelock", "gnureadline; platform_system != 'Windows'", "pyreadline3; platform_system == 'Windows'"], # didn't add CLI-specific req since some are not cross-platform
         # Other
